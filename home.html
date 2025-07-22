@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Productivity Prediction</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            color: #fff;
+        }
+
+        .container {
+            margin-top: 8%;
+            text-align: center;
+        }
+
+        .heading {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .subheading {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .predict-btn {
+            font-size: 18px;
+            padding: 12px 30px;
+            background-color: #fff;
+            color: #0066cc;
+            border: none;
+            border-radius: 30px;
+            transition: 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .predict-btn:hover {
+            background-color: #0066cc;
+            color: #fff;
+        }
+
+        .features {
+            margin-top: 60px;
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .feature-text {
+            font-size: 18px;
+        }
+
+        footer {
+            margin-top: 80px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .heading {
+                font-size: 32px;
+            }
+
+            .subheading {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="heading"><i class="fas fa-industry"></i> Garment Productivity Predictor</h1>
+    <p class="subheading">Forecast the efficiency of your workers in just a few clicks</p>
+    <a href="/predict"><button class="predict-btn"><i class="fas fa-chart-line"></i> Predict Now</button></a>
+
+    <div class="features row text-center">
+        <div class="col-md-4">
+            <i class="fas fa-bolt feature-icon"></i>
+            <p class="feature-text">Instant Predictions</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fas fa-robot feature-icon"></i>
+            <p class="feature-text">Powered by Machine Learning</p>
+        </div>
+        <div class="col-md-4">
+            <i class="fas fa-user-check feature-icon"></i>
+            <p class="feature-text">Accurate & Reliable Results</p>
+        </div>
+    </div>
+
+    <footer class="text-white mt-5">© 2025 Productivity Predictor | Smart Internz Project</footer>
+</div>
+
+</body>
+</html>

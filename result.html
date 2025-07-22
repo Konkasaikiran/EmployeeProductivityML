@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #dfe4ea;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            display: inline-block;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2f3542;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background-color: #3742fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>✅ Predicted Productivity: <span style="color:green;">{{ prediction }}</span></h2>
+        <a class="back-btn" href="/predict">🔙 Back to Prediction</a>
+    </div>
+</body>
+</html>
