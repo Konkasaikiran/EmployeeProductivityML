@@ -15,19 +15,27 @@ def home():
 def predict():
     if request.method == 'POST':
         try:
-            department = request.form['department']
-            day = request.form['day']
+            # Get department
+            department = request.form.get('department')
+            if department == "Other":
+                # Get custom input if 'Other' selected
+                department = request.form.get('custom_department')
+
+            day = request.form.get('day')
 
             # Encoding categorical variables manually
             department_map = {
-                'sweing': 0, 'finishing': 1
+                'sweing': 0,
+                'sewing': 0,
+                'finishing': 1
             }
             day_map = {
                 'Monday': 0, 'Tuesday': 1, 'Wednesday': 2,
                 'Thursday': 3, 'Friday': 4, 'Saturday': 5
             }
 
-            dept_val = department_map.get(department.lower(), 0)
+            # Encode department and day
+            dept_val = department_map.get(department.lower(), 0)  # default 0 if new dept
             day_val = day_map.get(day, 0)
 
             # Fetch and convert form inputs
@@ -45,13 +53,17 @@ def predict():
                 float(request.form['line_number'])
             ]
 
+            # Make prediction
             prediction = model.predict([np.array(data)])
-            return render_template('result.html', prediction=round(prediction[0], 2))
+            output = round(prediction[0], 2)
+
+            return render_template('result.html', prediction=output)
 
         except Exception as e:
             return f"<h3>Error: {str(e)}</h3><a href='/predict'>Back</a>"
 
     return render_template('predict.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
