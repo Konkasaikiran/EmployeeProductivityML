@@ -1,110 +1,119 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Predict Productivity</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #dff9fb, #c7ecee);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px;
-        }
+  <meta charset="UTF-8">
+  <title>Employee Productivity Prediction</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #ffffff, #f0f9ff);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        h2 {
-            color: #2f3542;
-            margin-bottom: 20px;
-        }
+```
+.container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 480px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
-            width: 400px;
-        }
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
 
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1e3a8a;
+  letter-spacing: 1px;
+}
 
-        input, select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            margin-top: 5px;
-        }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-        button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 10px;
-            background-color: #1e90ff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+input, select {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
 
-        button:hover {
-            background-color: #3742fa;
-        }
-    </style>
+input:focus, select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+button {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  transform: translateY(-2px);
+}
+
+.note {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 10px;
+  color: #475569;
+}
+```
+
+  </style>
 </head>
 <body>
-    <h2>📊 Employee Productivity Prediction</h2>
-    <form method="POST">
-        <label for="department">Department</label>
-        <select name="department" required>
-            <option value="sweing">Sewing</option>
-            <option value="finishing">Finishing</option>
-        </select>
+  <div class="container">
+    <h2>Predict Employee Productivity</h2>
+    <form action="/predict" method="POST">
+      <input type="text" name="department" placeholder="Department (e.g. sewing, finishing)" required>
+      <select name="day" required>
+        <option value="" disabled selected>Select Day</option>
+        <option>Monday</option>
+        <option>Tuesday</option>
+        <option>Wednesday</option>
+        <option>Thursday</option>
+        <option>Friday</option>
+        <option>Saturday</option>
+      </select>
+      <input type="number" name="wip" placeholder="WIP" required>
+      <input type="number" name="over_time" placeholder="Over Time" required>
+      <input type="number" name="incentive" placeholder="Incentive" required>
+      <input type="number" name="idle_time" placeholder="Idle Time" required>
+      <input type="number" name="idle_men" placeholder="Idle Men" required>
+      <input type="number" name="no_of_style_change" placeholder="Number of Style Changes" required>
+      <input type="number" name="smv" placeholder="SMV" required>
+      <input type="number" name="actual_productivity" placeholder="Actual Productivity" required>
+      <input type="number" name="line_number" placeholder="Line Number" required>
 
-        <label for="day">Day</label>
-        <select name="day" required>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-        </select>
+```
+  <button type="submit">Predict Productivity</button>
+</form>
+<p class="note">Fill all the fields carefully before submitting</p>
+```
 
-        <label for="line_number">Line Number</label>
-        <input type="number" name="line_number" required>
-
-        <label for="wip">WIP</label>
-        <input type="number" step="any" name="wip" required>
-
-        <label for="over_time">Over Time</label>
-        <input type="number" step="any" name="over_time" required>
-
-        <label for="incentive">Incentive</label>
-        <input type="number" step="any" name="incentive" required>
-
-        <label for="idle_time">Idle Time</label>
-        <input type="number" step="any" name="idle_time" required>
-
-        <label for="idle_men">Idle Men</label>
-        <input type="number" step="any" name="idle_men" required>
-
-        <label for="no_of_style_change">No of Style Change</label>
-        <input type="number" step="any" name="no_of_style_change" required>
-
-        <label for="smv">SMV</label>
-        <input type="number" step="any" name="smv" required>
-
-        <label for="actual_productivity">Actual Productivity</label>
-        <input type="number" step="any" name="actual_productivity" required>
-
-        <button type="submit">🔍 Predict</button>
-    </form>
+  </div>
 </body>
 </html>
